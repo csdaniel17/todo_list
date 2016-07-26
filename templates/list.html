@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+<br>
+<form action="/add_task" method="POST">
+  
+    <p><input type="text" name="name"></p>
+    <p><button type="submit">Add task</button></p>
+
+
+</form>
+
+<br>
+
+<form action="/edit_tasks" method="POST">
+
+{% for task in tasks %}
+
+<p{% if task.completed %} class="completed" {% endif %}>
+  <input type="checkbox" name="{{task.id}}"> {{task.name}}
+</p>
+
+{% endfor %}
+
+<br>
+
+<button type="submit" name="complete">Mark Complete</button>
+<button type="submit" name="delete">Delete</button>
+</form>
+
+
+{% endblock %}
